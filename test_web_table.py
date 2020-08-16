@@ -1,10 +1,7 @@
-from selenium import webdriver
+from pages.drivers import Drivers
 from pages.web_table_page import WebTablePage
 
-options = webdriver.ChromeOptions()
-options.add_argument('--start-maximized')
-browser = webdriver.Chrome(options=options)
-
+browser = Drivers('--start-maximized').chrome()
 wtp = WebTablePage(driver=browser)
 
 first_n = ['#', 'Adam', 'Barbra', 'Coba', 'Daniel', 'Eva', 'Ferdinand', 'Gordon']
@@ -14,6 +11,7 @@ age = ['#', '50', '32', '21', '40', '45', '30', '27']
 salary = ['#', '45000', '35000', '23000', '38000', '40000', '36000', '29000']
 department = ['#', 'QA', 'Insurance', 'HR', 'Legal', 'Compliance', 'Accounts', 'Services']
 
+# test start
 wtp.go()
 
 wtp.web_tables_button.click()
@@ -44,5 +42,5 @@ wtp.rows_drop.select_drop("5")
 wtp.next_table.click()
 wtp.previous_table.click()
 browser.quit()
-
+print('test passed')
 

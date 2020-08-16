@@ -1,10 +1,7 @@
 from pages.text_box_page import TextBoxPage
-from selenium import webdriver
+from pages.drivers import Drivers
 
-options = webdriver.ChromeOptions()
-options.add_argument('--start-maximized')
-browser = webdriver.Chrome(options=options)
-
+browser = Drivers('--start-maximized').chrome()
 tbp = TextBoxPage(driver=browser)
 
 # Test setup
@@ -13,6 +10,7 @@ email = 'michael@gmail.com'
 addr1 = 'Wilson rd.5, Prague'
 addr2 = 'Czech Republic'
 
+# test start
 tbp.go()
 tbp.text_box_button.click()
 tbp.full_name_input.input_text(name)
@@ -27,3 +25,4 @@ assert tbp.sub_address1.text == f'Current Address :{addr1}'
 assert tbp.sub_address2.text == f'Permananet Address :{addr2}'
 print(f'details:\n{name}\n{email}\n{addr1}\n{addr2}\n ALL CORRECT !!!')
 browser.quit()
+print('test passed')

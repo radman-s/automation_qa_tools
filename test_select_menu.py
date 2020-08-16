@@ -1,13 +1,11 @@
-from selenium import webdriver
+from pages.drivers import Drivers
 from pages.select_menu_page import SelectMenuPage
 
-options = webdriver.ChromeOptions()
-options.add_argument('--start-maximized')
-browser = webdriver.Chrome(options=options)
-
+browser = Drivers('--start-maximized').chrome()
 smp = SelectMenuPage(driver=browser)
-smp.go()
 
+# test start
+smp.go()
 # SELECT OPTIONS
 # hover
 smp.select_value.click()
@@ -77,7 +75,7 @@ smp.old_style_menu.select_drop('2')
 smp.old_style_menu.select_drop('1')
 smp.old_style_menu.select_drop('red')
 browser.quit()
-
+print('test passed')
 
 
 

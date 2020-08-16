@@ -1,12 +1,10 @@
-from selenium import webdriver
+from pages.drivers import Drivers
 from pages.date_picker_page import DatePickerPage
 
-options = webdriver.ChromeOptions()
-options.add_argument('--start-maximized')
-browser = webdriver.Chrome(options=options)
-
+browser = Drivers('--start-maximized').chrome()
 dpp = DatePickerPage(driver=browser)
 
+# test start
 dpp.go()
 
 # SELECT DATE
@@ -21,7 +19,7 @@ dpp.time_select.click()
 dpp.month_drop2.click()
 dpp.year_drop2.click()
 browser.quit()
-
+print('test passed')
 
 
 
